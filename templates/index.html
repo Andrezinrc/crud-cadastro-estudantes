@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename="style.css") }}"></link>
+l    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>pagina inicial</title>
+</head>
+<body>
+   <h1 class="titulo">Crud Estudantes</h1>
+   <div clasa="container">
+      <div class="row">
+         <div class"col-xs-12">
+            <a class="btn btn-dark text-white" href="/add">Adicionar Estudantes</a>
+         </div>
+        <div class="col-xs-12">
+           <table class="table">
+              <thead>
+                 <tr>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Ações</th>
+                 </tr>
+              </thead>
+              <tbody>
+                 {% for e in estudantes %}
+                    <tr>
+                      <th>{{ e.nome }}</th>
+                      <th>{{ e.idade }}</th>
+                      <th>
+                         <a class="btn btn-primary" href="/edit/{{e.id}}">Editar</a>
+                         <a class="btn btn-danger"  href="/delete/{{e.id}}">Excluir</a>
+                      </th>
+                    </tr>
+                 {% endfor %}
+              </tbody>
+           </table>
+        </div>
+      </div>
+   </div>
+   <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+</body>
+</html>
